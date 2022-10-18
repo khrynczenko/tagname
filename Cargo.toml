@@ -9,3 +9,6 @@ tagname_derive = { path = "tagname_derive" }
 
 [workspace]
 members = ["tagname_derive"]
+
+[dev-dependencies]
+trybuild = "1.0.71"

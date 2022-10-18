@@ -1,0 +1,7 @@
+error: proc-macro derive panicked
+ --> tests/compile_time_tests/bad-type-struct.rs:3:10
+  |
+3 | #[derive(TagName)]
+  |          ^^^^^^^
+  |
+  = help: message: cannot derive TagName for non-enum types
