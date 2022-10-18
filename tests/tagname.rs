@@ -1,6 +1,6 @@
-use tagname::Variant;
+use tagname::TagName;
 
-#[derive(Variant)]
+#[derive(TagName)]
 enum MyVariant {
     Yes,
     No,

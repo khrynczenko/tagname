@@ -1,5 +1,5 @@
-pub use tagname_derive::Variant;
+pub use tagname_derive::TagName;
 
-pub trait Variant {
+pub trait TagName {
     fn tag_name(&self) -> &'static str;
 }

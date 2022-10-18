@@ -2,8 +2,8 @@ use proc_macro::TokenStream;
 use quote::quote;
 use syn::{Ident, Variant};
 
-#[proc_macro_derive(Variant)]
-pub fn variant_derive(input: TokenStream) -> TokenStream {
+#[proc_macro_derive(TagName)]
+pub fn tagname_derive(input: TokenStream) -> TokenStream {
     let ast = syn::parse(input).unwrap();
 
     // Build the trait implementation
@@ -19,7 +19,7 @@ fn impl_variant_derive_macro(ast: syn::DeriveInput) -> TokenStream {
             .into_iter()
             .map(|pair| pair.into_value())
             .collect(),
-        _ => panic!("cannot derive Variant for non-enum types"),
+        _ => panic!("cannot derive TagName for non-enum types"),
     };
 
     let variants_with_fields = variants.iter().cloned().filter(|v| !v.fields.is_empty());
@@ -31,7 +31,7 @@ fn impl_variant_derive_macro(ast: syn::DeriveInput) -> TokenStream {
         .collect();
 
     let gen = quote! {
-        impl Variant for #name {
+        impl TagName for #name {
             fn tag_name(&self) -> &'static str {
                 match self {
                     #(
@@ -45,13 +45,4 @@ fn impl_variant_derive_macro(ast: syn::DeriveInput) -> TokenStream {
         }
     };
     gen.into()
-}
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        let result = 2 + 2;
-        assert_eq!(result, 4);
-    }
 }
