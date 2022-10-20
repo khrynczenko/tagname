@@ -8,6 +8,7 @@ keywords = ["derive", "variant", "tag", "tagged-union", "tag-name"]
 repository = "https://github.com/khrynczenko/tagname"
 homepage = "https://github.com/khrynczenko/tagname"
 readme = "README.md"
+license = "MIT"
 
 [dependencies]
 tagname_derive = { path = "tagname_derive" }
