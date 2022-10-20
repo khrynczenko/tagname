@@ -3,6 +3,7 @@ name = "tagname_derive"
 version = "0.1.0"
 edition = "2021"
 authors = ["Krzysztof Hrynczenko <jeniopy@gmail.com>"]
+description = "derive(TagName) implementation"
 documentation = "https://docs.rs/tagname"
 repository = "https://github.com/khrynczenko/tagname"
 homepage = "https://github.com/khrynczenko/tagname"
