@@ -45,6 +45,11 @@ fn traverse_ast(ast: syn::DeriveInput) -> TaggedUnion {
         _ => panic!("cannot derive TagName for non-enum types"),
     };
 
+    assert!(
+        !variants.is_empty(),
+        "cannot derive TagName for empty enum types"
+    );
+
     let variants_with_fields = variants.iter().cloned().filter(|v| !v.fields.is_empty());
     let variants_without_fields = variants.iter().cloned().filter(|v| v.fields.is_empty());
     let with_field_tags: Vec<Ident> = variants_with_fields.into_iter().map(|v| v.ident).collect();
