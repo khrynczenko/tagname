@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.1] - 2022-10-20
+
+### Bug Fixes
+
+- Allow unions with one type of fields missing
+
 ## [0.1.0] - 2022-10-20
 
 ### Documentation
@@ -13,6 +19,7 @@ All notable changes to this project will be documented in this file.
 - Fill out tagname_derive Cargo.toml
 - Add CHANGELOG.md using git-cliff
 - Add descriptions to Cargo.toml files
+- Update CHANGELOG
 
 ### Features
 
