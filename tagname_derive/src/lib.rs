@@ -69,13 +69,19 @@ fn generate_code(tagged_union: TaggedUnion) -> TokenStream {
     let variants_without_fields = tagged_union.variants_without_fields;
     let variants_with_fields = tagged_union.variants_with_fields;
 
+    let comma = if variants_with_fields.is_empty() {
+        quote!()
+    } else {
+        quote!(,)
+    };
+
     let gen = quote! {
         impl TagName for #name {
             fn tag_name(&self) -> &'static str {
                 match self {
                     #(
                         #name::#variants_with_fields(_) => stringify!(#variants_with_fields)
-                    ),*,
+                    ),*#comma
                     #(
                         #name::#variants_without_fields => stringify!(#variants_without_fields)
                     ),*
