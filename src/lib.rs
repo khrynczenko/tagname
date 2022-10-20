@@ -15,6 +15,8 @@
 
 pub use tagname_derive::TagName;
 
+/// Exposes method `tag_name` to obtain a name (tag) of a currently hold
+/// variant inside an `enum` instance.
 pub trait TagName {
     fn tag_name(&self) -> &'static str;
 }
