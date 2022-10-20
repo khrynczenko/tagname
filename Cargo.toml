@@ -11,7 +11,7 @@ readme = "README.md"
 license = "MIT"
 
 [dependencies]
-tagname_derive = { path = "tagname_derive" }
+tagname_derive = { version = "0.1.0", path = "tagname_derive" }
 
 [workspace]
 members = ["tagname_derive"]
