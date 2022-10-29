@@ -2,11 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.0] - 2022-10-29
+
+### Bug Fixes
+
+- Allow variants with multiple values inside
+
+### Features
+
+- Add [tag(case="lower"|"upper")] attribute
+
+### Refactor
+
+- Use single vector for all tags
+- Extract treversing and generation
+
 ## [0.1.1] - 2022-10-20
 
 ### Bug Fixes
 
 - Allow unions with one type of fields missing
+
+### Miscellaneous Tasks
+
+- Bump version to 0.1.1
 
 ## [0.1.0] - 2022-10-20
 
