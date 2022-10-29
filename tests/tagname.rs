@@ -16,6 +16,7 @@ enum ComplexUnion {
     Yes,
     No,
     Maybe(usize),
+    Maybe2(usize, usize),
 }
 
 #[derive(TagName)]
@@ -42,9 +43,11 @@ fn complex_union_return_correct_tag_names() {
     let v1 = ComplexUnion::Yes;
     let v2 = ComplexUnion::No;
     let v3 = ComplexUnion::Maybe(1);
+    let v4 = ComplexUnion::Maybe2(1, 2);
     assert_eq!(v1.tag_name(), "Yes");
     assert_eq!(v2.tag_name(), "No");
     assert_eq!(v3.tag_name(), "Maybe");
+    assert_eq!(v4.tag_name(), "Maybe2");
 }
 
 #[test]

@@ -80,7 +80,7 @@ fn generate_code(tagged_union: TaggedUnion) -> TokenStream {
             fn tag_name(&self) -> &'static str {
                 match self {
                     #(
-                        #name::#variants_with_fields(_) => stringify!(#variants_with_fields)
+                        #name::#variants_with_fields(..) => stringify!(#variants_with_fields)
                     ),*#comma
                     #(
                         #name::#variants_without_fields => stringify!(#variants_without_fields)
