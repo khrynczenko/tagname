@@ -20,8 +20,15 @@ mod traversal;
 use proc_macro::TokenStream;
 use syn::Ident;
 
+enum Case {
+    Lower,
+    Upper,
+    Unchanged,
+}
+
 struct TagData {
     ident: Ident,
+    case: Case,
 }
 
 enum Tag {

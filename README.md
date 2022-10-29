@@ -13,7 +13,9 @@ use tagname::TagName;
 
 #[derive(TagName)]
 enum MyTaggedUnion {
+    [tag(case = "lower")]
     Yes,
+    [tag(case = "upper")]
     No,
     Maybe(usize),
 }
@@ -23,8 +25,8 @@ fn return_correct_tag_names() {
     let v1 = MyTaggedUnion::Yes;
     let v2 = MyTaggedUnion::No;
     let v3 = MyTaggedUnion::Maybe(1);
-    assert_eq!(v1.tag_name(), "Yes");
-    assert_eq!(v2.tag_name(), "No");
+    assert_eq!(v1.tag_name(), "yes");
+    assert_eq!(v2.tag_name(), "NO");
     assert_eq!(v3.tag_name(), "Maybe");
 }
 ```

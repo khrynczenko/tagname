@@ -1,0 +1,7 @@
+error: proc-macro derive panicked
+ --> tests/compile_time_tests/tag_attribute_case_value_not_lower.rs:3:10
+  |
+3 | #[derive(TagName)]
+  |          ^^^^^^^
+  |
+  = help: message: case value must be either "upper" or "lower"

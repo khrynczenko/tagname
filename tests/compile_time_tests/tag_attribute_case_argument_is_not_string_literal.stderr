@@ -1,0 +1,7 @@
+error: proc-macro derive panicked
+ --> tests/compile_time_tests/tag_attribute_case_argument_is_not_string_literal.rs:3:10
+  |
+3 | #[derive(TagName)]
+  |          ^^^^^^^
+  |
+  = help: message: `tag` attribute expectes an assignment expression `[tag(case = "lower" | "upper">]`
