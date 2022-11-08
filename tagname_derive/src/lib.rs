@@ -32,8 +32,9 @@ struct TagData {
 }
 
 enum Tag {
-    Empty(TagData),
-    NotEmpty(TagData),
+    Unit(TagData),
+    Unnamed(TagData),
+    Named(TagData),
 }
 
 struct TaggedUnion {

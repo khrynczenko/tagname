@@ -27,8 +27,9 @@ pub(crate) fn generate_code(tagged_union: TaggedUnion) -> TokenStream {
 
 fn generate_match_arm(enum_name: &Ident, tag: Tag) -> TokenStream2 {
     let (tag_data, wildcard) = match tag {
-        Tag::Empty(data) => (data, quote!()),
-        Tag::NotEmpty(data) => (data, quote!((..))),
+        Tag::Unit(data) => (data, quote!()),
+        Tag::Unnamed(data) => (data, quote!((..))),
+        Tag::Named(data) => (data, quote!({ .. })),
     };
     let ident = tag_data.ident;
     let output_ident = match tag_data.case {

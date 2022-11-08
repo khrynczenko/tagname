@@ -11,12 +11,20 @@ enum SimpleUnionSingleTag {
     Yes,
 }
 
+#[allow(dead_code)]
+struct Arbitrary {
+    x: String,
+    y: Option<usize>,
+}
+
 #[derive(TagName)]
 enum ComplexUnion {
     Yes,
     No,
     Maybe(usize),
     Maybe2(usize, usize),
+    Maybe3(Arbitrary),
+    Maybe4 { x: Option<String> },
 }
 
 #[derive(TagName)]
@@ -78,10 +86,19 @@ fn complex_union_return_correct_tag_names() {
     let v2 = ComplexUnion::No;
     let v3 = ComplexUnion::Maybe(1);
     let v4 = ComplexUnion::Maybe2(1, 2);
+    let v5 = ComplexUnion::Maybe3(Arbitrary {
+        x: String::from("x"),
+        y: Some(1),
+    });
+    let v6 = ComplexUnion::Maybe4 {
+        x: Some("x".to_owned()),
+    };
     assert_eq!(v1.tag_name(), "Yes");
     assert_eq!(v2.tag_name(), "No");
     assert_eq!(v3.tag_name(), "Maybe");
     assert_eq!(v4.tag_name(), "Maybe2");
+    assert_eq!(v5.tag_name(), "Maybe3");
+    assert_eq!(v6.tag_name(), "Maybe4");
 }
 
 #[test]

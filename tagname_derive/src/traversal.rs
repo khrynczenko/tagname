@@ -1,6 +1,6 @@
 use syn::punctuated::Pair;
 use syn::Attribute;
-use syn::{Expr, ExprLit, Lit, Variant};
+use syn::{Expr, ExprLit, Fields, Lit, Variant};
 
 use super::{Case, Tag, TagData, TaggedUnion};
 
@@ -35,16 +35,19 @@ fn traverse_variants(variants: Vec<Variant>) -> Vec<Tag> {
         .into_iter()
         .map(|v| {
             if !v.attrs.is_empty() {}
-            if v.fields.is_empty() {
-                Tag::Empty(TagData {
+            match v.fields {
+                Fields::Unit => Tag::Unit(TagData {
                     ident: v.ident.clone(),
                     case: traverse_attribute(&v),
-                })
-            } else {
-                Tag::NotEmpty(TagData {
+                }),
+                Fields::Unnamed(_) => Tag::Unnamed(TagData {
                     ident: v.ident.clone(),
                     case: traverse_attribute(&v),
-                })
+                }),
+                Fields::Named(_) => Tag::Named(TagData {
+                    ident: v.ident.clone(),
+                    case: traverse_attribute(&v),
+                }),
             }
         })
         .collect()
