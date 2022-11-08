@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.1] - 2022-11-08
+
+### Bug Fixes
+
+- Allow struct variants
+
+### Documentation
+
+- Add badges to README
+
 ## [0.2.0] - 2022-10-29
 
 ### Bug Fixes
