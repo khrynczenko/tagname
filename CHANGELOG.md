@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.0] - 2022-11-17
+
+### Features
+
+- Improve error messages by using span info
+
 ## [0.2.1] - 2022-11-08
 
 ### Bug Fixes

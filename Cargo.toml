@@ -1,6 +1,6 @@
 [package]
 name = "tagname"
-version = "0.2.1"
+version = "0.3.0"
 edition = "2021"
 authors = ["Krzysztof Hrynczenko <jeniopy@gmail.com>"]
 description = "get the name of a variant in your enum as a string"
@@ -12,7 +12,7 @@ readme = "README.md"
 license = "MIT"
 
 [dependencies]
-tagname_derive = { version = "0.2.1", path = "tagname_derive" }
+tagname_derive = { version = "0.3.0", path = "tagname_derive" }
 
 [workspace]
 members = ["tagname_derive"]
