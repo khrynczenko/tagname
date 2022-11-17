@@ -1,7 +1,5 @@
-error: proc-macro derive panicked
- --> tests/compile_time_tests/empty-enum.rs:3:10
+error: cannot derive `TagName` for empty enum types
+ --> tests/compile_time_tests/empty-enum.rs:4:6
   |
-3 | #[derive(TagName)]
-  |          ^^^^^^^
-  |
-  = help: message: cannot derive TagName for empty enum types
+4 | enum EmptyEnum {
+  |      ^^^^^^^^^

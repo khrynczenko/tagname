@@ -24,7 +24,10 @@ enum ComplexUnion {
     Maybe(usize),
     Maybe2(usize, usize),
     Maybe3(Arbitrary),
-    Maybe4 { x: Option<String> },
+    #[allow(unused)]
+    Maybe4 {
+        x: Option<String>,
+    },
 }
 
 #[derive(TagName)]

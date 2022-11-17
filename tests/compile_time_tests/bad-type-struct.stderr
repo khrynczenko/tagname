@@ -1,7 +1,5 @@
-error: proc-macro derive panicked
- --> tests/compile_time_tests/bad-type-struct.rs:3:10
+error: cannot derive `TagName` for struct types
+ --> tests/compile_time_tests/bad-type-struct.rs:4:5
   |
-3 | #[derive(TagName)]
-  |          ^^^^^^^
-  |
-  = help: message: cannot derive TagName for non-enum types
+4 | pub struct ArbitraryStruct {
+  |     ^^^^^^

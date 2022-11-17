@@ -1,7 +1,5 @@
-error: proc-macro derive panicked
- --> tests/compile_time_tests/tag_attribute_argument_empty.rs:3:10
+error: `tag` attribute expects an assignment expression `[tag(case = "lower" | "upper")]`
+ --> tests/compile_time_tests/tag_attribute_argument_empty.rs:5:5
   |
-3 | #[derive(TagName)]
-  |          ^^^^^^^
-  |
-  = help: message: `tag` attribute expectes an assignment expression `[tag(case = "lower" | "upper">]`: Error("expected attribute arguments in parentheses: #[tag(...)]")
+5 |     #[tag]
+  |     ^

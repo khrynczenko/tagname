@@ -47,5 +47,10 @@ struct TaggedUnion {
 pub fn tagname_derive(input: TokenStream) -> TokenStream {
     let ast = syn::parse(input).unwrap();
 
-    generation::generate_code(traversal::traverse_ast(ast))
+    let traversed = traversal::traverse_ast(ast);
+
+    if let Err(e) = traversed {
+        return e.0.into();
+    }
+    generation::generate_code(traversed.unwrap())
 }

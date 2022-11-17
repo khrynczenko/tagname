@@ -1,7 +1,5 @@
-error: proc-macro derive panicked
- --> tests/compile_time_tests/tag_attribute_argument_lhs_not_case.rs:3:10
+error: left handside of the assignment in `tag` attribute must be `case`
+ --> tests/compile_time_tests/tag_attribute_argument_lhs_not_case.rs:5:11
   |
-3 | #[derive(TagName)]
-  |          ^^^^^^^
-  |
-  = help: message: case value must be either "upper" or "lower"
+5 |     #[tag(something = "something")]
+  |           ^^^^^^^^^
