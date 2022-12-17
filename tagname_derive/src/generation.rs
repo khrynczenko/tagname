@@ -14,7 +14,7 @@ pub(crate) fn generate_code(tagged_union: TaggedUnion) -> TokenStream {
         .collect();
 
     let gen = quote! {
-        impl TagName for #name {
+        impl tagname::TagName for #name {
             fn tag_name(&self) -> &'static str {
                 match self {
                     #(#match_arms)*

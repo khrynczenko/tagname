@@ -16,9 +16,9 @@ use tagname::TagName;
 
 #[derive(TagName)]
 enum MyTaggedUnion {
-    [tag(case = "lower")]
+    #[tag(case = "lower")]
     Yes,
-    [tag(case = "upper")]
+    #[tag(case = "upper")]
     No,
     Maybe(usize),
 }
