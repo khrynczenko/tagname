@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.1] - 2022-12-17
+
+### Bug Fixes
+
+- Use full path in code generation `impl tagname::TagName`
+
 ## [0.3.0] - 2022-11-17
 
 ### Features
