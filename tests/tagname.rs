@@ -17,6 +17,7 @@ struct Arbitrary {
     y: Option<usize>,
 }
 
+#[allow(dead_code)]
 #[derive(TagName)]
 enum ComplexUnion {
     Yes,
@@ -30,11 +31,13 @@ enum ComplexUnion {
     },
 }
 
+#[allow(dead_code)]
 #[derive(TagName)]
 enum ComplexUnionSingleTag {
     Maybe(usize),
 }
 
+#[allow(dead_code)]
 #[derive(TagName)]
 enum DifferentCasesUnion {
     #[tag(case = "lower")]
