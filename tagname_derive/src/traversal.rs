@@ -29,7 +29,6 @@ fn traverse_enum(ast: syn::DeriveInput) -> Result<Vec<Variant>, Error> {
         syn::Data::Enum(enum_data) => Ok(enum_data
             .variants
             .into_pairs()
-            .into_iter()
             .map(Pair::into_value)
             .collect()),
         syn::Data::Struct(s) => Err(Error(
@@ -44,7 +43,6 @@ fn traverse_enum(ast: syn::DeriveInput) -> Result<Vec<Variant>, Error> {
 fn traverse_variants(variants: Vec<Variant>) -> Result<Vec<Tag>, Error> {
     let mut tags = Vec::new();
     for v in variants {
-        if !v.attrs.is_empty() {}
         tags.push(match v.fields {
             Fields::Unit => Tag::Unit(TagData {
                 ident: v.ident.clone(),
@@ -67,13 +65,12 @@ fn traverse_attribute(variant: &Variant) -> Result<Case, Error> {
     if variant.attrs.is_empty() {
         return Ok(Case::Unchanged);
     }
-    let tag_attribute = variant.attrs.iter().find(|attr| attr.path.is_ident("tag"));
 
-    if tag_attribute.is_none() {
-        return Ok(Case::Unchanged);
+    if let Some(tag_attribute) = variant.attrs.iter().find(|attr| attr.path.is_ident("tag")) {
+        return traverse_tag_attribute_argument(tag_attribute);
     }
 
-    traverse_tag_attribute_argument(tag_attribute.unwrap())
+    Ok(Case::Unchanged)
 }
 
 fn traverse_tag_attribute_argument(attribute: &Attribute) -> Result<Case, Error> {
@@ -81,13 +78,10 @@ fn traverse_tag_attribute_argument(attribute: &Attribute) -> Result<Case, Error>
         Error(quote::quote_spanned! {attribute.span()=> compile_error!(r#"`tag` attribute expects an assignment expression `[tag(case = "lower" | "upper")]`"#); })
     })?;
 
-    let assign_expr = match expr {
-        Expr::Assign(assign_expr) => assign_expr,
-        _ => {
-            return Err(Error(
-                quote::quote_spanned! {expr.span()=> compile_error!(r#"`tag` attribute expects an assignment expression `[tag(case = "lower" | "upper")]`"#); },
-            ));
-        }
+    let Expr::Assign(assign_expr) = expr else {
+        return Err(Error(
+            quote::quote_spanned! {expr.span()=> compile_error!(r#"`tag` attribute expects an assignment expression `[tag(case = "lower" | "upper")]`"#); },
+        ));
     };
 
     match *assign_expr.left {
